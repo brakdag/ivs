@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="animate.css/animate.min.css">
+
+<style type="text/css">
+   body { background: green !important; }
+  h1>.badge, h2>.badge, h3>.badge {
+    vertical-align:middle;
+    margin-top: -0.5em;
+}
+</style>
+
+  </head>
+	<body>
+	<div class="container-fluid">
+			<h3>	
+  				<div class="row float-right">		
+  					<span id="marq" class="badge badge-dark float-right"style="color:white;align-content: right">
+     				<div id ="marquesina">Inicio de Transmisión</div></span>
+  					<span class="badge badge-secondary float-right"><div id ="reloj"></div></span>
+  					<span  class="badge badge-danger float-right"> 
+              <div id="vivo" class="heartBeat"><i id="radioicon" class="animated rotateIn slow" data-feather="radio"></i> EN VIVO</div>
+            </span>
+  				</div>
+  		</h3>
+  </div>
+
+<script src="jquery/dist/jquery.min.js"></script>
+<script src="popper.js/dist/umd/popper.min.js"></script>
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+const mt=30000
+var t = []
+var icom = []
+var ico = ["radio","youtube","video","radio"]
+var i=0
+
+function updateClock(){
+	$("#reloj").html(`<div id="reloj"><i data-feather="clock"></i>${getHora()}</div>`)
+	feather.replace()
+}
+
+function getHora(){
+	var r=data=>data.toString().length<2? "0"+data.toString():data.toString();
+	var hora = new Date()
+	return r(hora.getHours()) + ":"+r(hora.getMinutes()) + ":"+ r(hora.getSeconds());
+}
+
+
+
+function mensajes(){
+	if (i>=t.length)i=0;
+	//console.log(i)
+	$("#marquesina").html(`<div id="marquesina"><i data-feather=${icom[i]}></i> ${t[i++]}</div>`)
+	$("#tostada").toast("show");
+	var texto=$("marq").html();
+  $("#marq").addClass("animated bounceInRight slow");
+  setTimeout(function(){
+    $("#marq").removeClass("bounceInRight");
+    $("#marq").addClass("bounceOutRight");
+  }, mt-1000);
+  setTimeout(function(){
+    $("#marq").removeClass("bounceOutRight");
+    $("#marq").addClass("bounceInRight");
+  }, mt);
+ }
+
+
+function rotateRadio(){
+    $("#radioicon").removeClass("rotateOut");
+    $("#radioicon").addClass("rotateIn");
+setTimeout(function(){
+    $("#radioicon").removeClass("rotateIn");
+    $("#radioicon").addClass("rotateOut");
+  },7000)
+}
+
+function beat(){
+    $("#vivo").removeClass("heartBeat");
+setTimeout(function(){
+    $("#vivo").addClass("heartBeat");
+  },8000)
+}
+
+
+
+$(document).ready(function(){
+$.ajax({
+        url: `getdata`, 
+        success: function (result) {
+
+
+function reanimar(objeto){
+  $(objeto).removeClass("animated")
+  setTimeout(function(){$(objeto).addClass("animated")}, 100);
+}
+       
+        var r=JSON.parse(result)
+       
+        t = Object.values(r)
+
+        icom=Object.values(t.pop())
+       // console.log(t,icom)
+        
+        updateClock();
+        setInterval(function(){updateClock()},1000);
+       
+        //mensajes();
+        setInterval(function(){mensajes()}, mt);
+        
+        setInterval(function(){rotateRadio()},8000);
+
+        setTimeout(function(){
+          beat();
+          setInterval(function(){beat()},8000)},4000);
+
+      }
+    });
+
+
+ 
+});
+
+
+
+
+</script>
+  </body>
+</html>
