@@ -17,7 +17,7 @@
   </head>
 	<body>
 	<div class="container-fluid">
-			<h3>	
+			<h1>	
   				<div class="row float-right">		
   					<span id="marq" class="badge badge-dark float-right"style="color:white;align-content: right">
      				<div id ="marquesina">Inicio de Transmisión</div></span>
@@ -26,7 +26,7 @@
               <div id="vivo" class="heartBeat"><i id="radioicon" class="animated rotateIn slow" data-feather="radio"></i> EN VIVO</div>
             </span>
   				</div>
-  		</h3>
+  		</h1>
   </div>
 
 <script src="jquery/dist/jquery.min.js"></script>
@@ -41,7 +41,7 @@ var ico = ["radio","youtube","video","radio"]
 var i=0
 
 function updateClock(){
-	$("#reloj").html(`<div id="reloj"><i data-feather="clock"></i>${getHora()}</div>`)
+	$("#reloj").html(`<div id="reloj"><i data-feather="clock"></i> ${getHora()}</div>`)
 	feather.replace()
 }
 
@@ -93,13 +93,7 @@ $(document).ready(function(){
 $.ajax({
         url: `getdata`, 
         success: function (result) {
-
-
-function reanimar(objeto){
-  $(objeto).removeClass("animated")
-  setTimeout(function(){$(objeto).addClass("animated")}, 100);
-}
-       
+     //  console.log(result)
         var r=JSON.parse(result)
        
         t = Object.values(r)

@@ -1,7 +1,30 @@
 {
+	"61M":{
 	"escuela":"Esc. N.°:4-124 Reynaldo Merín",
 	"materia":"Maquinas Eléctricas II",
 	"tema":"Motores Paso a Paso",
 	"usuario":"Gustavo",
 	"iconos":{"escuela":"bookmark","materia":"file","tema":"edit","usuario":"user"}
+	},
+	"62E":{
+	"escuela":"Esc. N.°:4-117 Ejército de los Andes",
+	"materia":"Instalaciones Eléctricas",
+	"tema":"Sistema Eléctrico Argentino",
+	"usuario":"Gustavo",
+	"iconos":{"escuela":"bookmark","materia":"file","tema":"edit","usuario":"user"}
+	},
+	"61E":{
+	"escuela":"Esc. N.°:4-117 Ejército de los Andes",
+	"materia":"Tecnología de Fabricación",
+	"tema":"Forjado, moldeado.",
+	"usuario":"Gustavo",
+	"iconos":{"escuela":"bookmark","materia":"file","tema":"edit","usuario":"user"}
+	},
+	"65E":{
+	"escuela":"Esc. N.°:4-117 Ejército de los Andes",
+	"materia":"Mantenimiento y Reparación de Equipos",
+	"tema":"Listas de Equipos",
+	"usuario":"Gustavo",
+	"iconos":{"escuela":"bookmark","materia":"file","tema":"edit","usuario":"user"}
+	}
 }
